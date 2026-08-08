@@ -122,16 +122,13 @@ variable "admin_object_id" {
 # Grafana Cloud — Loki (logs push)
 
 variable "loki_url" {
-  description = "Grafana Cloud Loki push base URL"
-  type        = string
-  default     = "https://logs-prod-XXX.grafana.net"
+  type    = string
+  default = ""
 }
-
 
 # Grafana Cloud — Mimir/Prometheus (metrics remote write)
 
 variable "prometheus_remote_write_url" {
-  description = "Grafana Cloud Prometheus/Mimir remote write URL"
-  type        = string
-  default     = "https://prometheus-prod-XX.grafana.net/api/prom/push"
+  type    = string
+  default = ""
 }
