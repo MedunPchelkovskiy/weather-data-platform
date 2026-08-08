@@ -118,3 +118,20 @@ variable "pushgateway_memory" {
 variable "admin_object_id" {
   type = string
 }
+
+# Grafana Cloud — Loki (logs push)
+
+variable "loki_url" {
+  description = "Grafana Cloud Loki push base URL"
+  type        = string
+  default     = "https://logs-prod-XXX.grafana.net"
+}
+
+
+# Grafana Cloud — Mimir/Prometheus (metrics remote write)
+
+variable "prometheus_remote_write_url" {
+  description = "Grafana Cloud Prometheus/Mimir remote write URL"
+  type        = string
+  default     = "https://prometheus-prod-XX.grafana.net/api/prom/push"
+}

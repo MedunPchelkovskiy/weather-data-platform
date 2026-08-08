@@ -29,6 +29,12 @@ SECRETS = {
     "weatherapi-api-key": os.getenv("WEATHERAPI_API_KEY"),
 
     "prefect-api-key": os.getenv("PREFECT_API_KEY"),
+
+    "loki-username": os.getenv("LOKI_USERNAME"),
+    "loki-password": os.getenv("LOKI_PASSWORD"),
+
+    "prometheus-username": os.getenv("PROMETHEUS_USERNAME"),
+    "prometheus-password": os.getenv("PROMETHEUS_PASSWORD"),
 }
 
 credential = DefaultAzureCredential()
