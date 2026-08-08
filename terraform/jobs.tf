@@ -104,6 +104,30 @@ resource "azurerm_container_app_job" "hourly_etl" {
     identity            = azurerm_user_assigned_identity.etl_jobs.id
   }
 
+  secret {
+    name                = "loki-username"
+    key_vault_secret_id = data.azurerm_key_vault_secret.loki_username.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "loki-password"
+    key_vault_secret_id = data.azurerm_key_vault_secret.loki_password.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "prometheus-username"
+    key_vault_secret_id = data.azurerm_key_vault_secret.prometheus_username.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "prometheus-password"
+    key_vault_secret_id = data.azurerm_key_vault_secret.prometheus_password.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
 
   template {
 
@@ -286,6 +310,41 @@ resource "azurerm_container_app_job" "hourly_etl" {
         name  = "BASE_DIR_SEASONALLY_SUMM_GOLD"
         value = "MyLakehouse/Meteo/gold/seasonally-summ-forecast"
       }
+
+      env {
+        name  = "LOKI_URL"
+        value = var.loki_url
+      }
+
+      env {
+        name        = "LOKI_USERNAME"
+        secret_name = "loki-username"
+      }
+
+      env {
+        name        = "LOKI_PASSWORD"
+        secret_name = "loki-password"
+      }
+
+      env {
+        name  = "PROMETHEUS_REMOTE_WRITE_URL"
+        value = var.prometheus_remote_write_url
+      }
+
+      env {
+        name        = "PROMETHEUS_USERNAME"
+        secret_name = "prometheus-username"
+      }
+
+      env {
+        name        = "PROMETHEUS_PASSWORD"
+        secret_name = "prometheus-password"
+      }
+
+      env {
+        name  = "JOB_NAME"
+        value = "weather-etl-hourly"
+      }
     }
   }
 
@@ -400,6 +459,30 @@ resource "azurerm_container_app_job" "gold_daily_summ_flow" {
   secret {
     name                = "prefect-api-key"
     key_vault_secret_id = data.azurerm_key_vault_secret.prefect_api_key.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "loki-username"
+    key_vault_secret_id = data.azurerm_key_vault_secret.loki_username.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "loki-password"
+    key_vault_secret_id = data.azurerm_key_vault_secret.loki_password.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "prometheus-username"
+    key_vault_secret_id = data.azurerm_key_vault_secret.prometheus_username.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "prometheus-password"
+    key_vault_secret_id = data.azurerm_key_vault_secret.prometheus_password.versionless_id
     identity            = azurerm_user_assigned_identity.etl_jobs.id
   }
 
@@ -590,6 +673,41 @@ resource "azurerm_container_app_job" "gold_daily_summ_flow" {
         name  = "BASE_DIR_SEASONALLY_SUMM_GOLD"
         value = "MyLakehouse/Meteo/gold/seasonally-summ-forecast"
       }
+
+      env {
+        name  = "LOKI_URL"
+        value = var.loki_url
+      }
+
+      env {
+        name        = "LOKI_USERNAME"
+        secret_name = "loki-username"
+      }
+
+      env {
+        name        = "LOKI_PASSWORD"
+        secret_name = "loki-password"
+      }
+
+      env {
+        name  = "PROMETHEUS_REMOTE_WRITE_URL"
+        value = var.prometheus_remote_write_url
+      }
+
+      env {
+        name        = "PROMETHEUS_USERNAME"
+        secret_name = "prometheus-username"
+      }
+
+      env {
+        name        = "PROMETHEUS_PASSWORD"
+        secret_name = "prometheus-password"
+      }
+
+      env {
+        name  = "JOB_NAME"
+        value = "weather-etl-hourly"
+      }
     }
   }
 
@@ -705,6 +823,30 @@ resource "azurerm_container_app_job" "gold_weekly_summ_flow" {
   secret {
     name                = "prefect-api-key"
     key_vault_secret_id = data.azurerm_key_vault_secret.prefect_api_key.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "loki-username"
+    key_vault_secret_id = data.azurerm_key_vault_secret.loki_username.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "loki-password"
+    key_vault_secret_id = data.azurerm_key_vault_secret.loki_password.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "prometheus-username"
+    key_vault_secret_id = data.azurerm_key_vault_secret.prometheus_username.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "prometheus-password"
+    key_vault_secret_id = data.azurerm_key_vault_secret.prometheus_password.versionless_id
     identity            = azurerm_user_assigned_identity.etl_jobs.id
   }
 
@@ -895,6 +1037,41 @@ resource "azurerm_container_app_job" "gold_weekly_summ_flow" {
         name  = "BASE_DIR_SEASONALLY_SUMM_GOLD"
         value = "MyLakehouse/Meteo/gold/seasonally-summ-forecast"
       }
+
+      env {
+        name  = "LOKI_URL"
+        value = var.loki_url
+      }
+
+      env {
+        name        = "LOKI_USERNAME"
+        secret_name = "loki-username"
+      }
+
+      env {
+        name        = "LOKI_PASSWORD"
+        secret_name = "loki-password"
+      }
+
+      env {
+        name  = "PROMETHEUS_REMOTE_WRITE_URL"
+        value = var.prometheus_remote_write_url
+      }
+
+      env {
+        name        = "PROMETHEUS_USERNAME"
+        secret_name = "prometheus-username"
+      }
+
+      env {
+        name        = "PROMETHEUS_PASSWORD"
+        secret_name = "prometheus-password"
+      }
+
+      env {
+        name  = "JOB_NAME"
+        value = "weather-etl-hourly"
+      }
     }
   }
 
@@ -1009,6 +1186,30 @@ resource "azurerm_container_app_job" "gold_monthly_summ_flow" {
   secret {
     name                = "prefect-api-key"
     key_vault_secret_id = data.azurerm_key_vault_secret.prefect_api_key.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "loki-username"
+    key_vault_secret_id = data.azurerm_key_vault_secret.loki_username.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "loki-password"
+    key_vault_secret_id = data.azurerm_key_vault_secret.loki_password.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "prometheus-username"
+    key_vault_secret_id = data.azurerm_key_vault_secret.prometheus_username.versionless_id
+    identity            = azurerm_user_assigned_identity.etl_jobs.id
+  }
+
+  secret {
+    name                = "prometheus-password"
+    key_vault_secret_id = data.azurerm_key_vault_secret.prometheus_password.versionless_id
     identity            = azurerm_user_assigned_identity.etl_jobs.id
   }
 
@@ -1198,6 +1399,41 @@ resource "azurerm_container_app_job" "gold_monthly_summ_flow" {
       env {
         name  = "BASE_DIR_SEASONALLY_SUMM_GOLD"
         value = "MyLakehouse/Meteo/gold/seasonally-summ-forecast"
+      }
+
+      env {
+        name  = "LOKI_URL"
+        value = var.loki_url
+      }
+
+      env {
+        name        = "LOKI_USERNAME"
+        secret_name = "loki-username"
+      }
+
+      env {
+        name        = "LOKI_PASSWORD"
+        secret_name = "loki-password"
+      }
+
+      env {
+        name  = "PROMETHEUS_REMOTE_WRITE_URL"
+        value = var.prometheus_remote_write_url
+      }
+
+      env {
+        name        = "PROMETHEUS_USERNAME"
+        secret_name = "prometheus-username"
+      }
+
+      env {
+        name        = "PROMETHEUS_PASSWORD"
+        secret_name = "prometheus-password"
+      }
+
+      env {
+        name  = "JOB_NAME"
+        value = "weather-etl-hourly"
       }
     }
   }
