@@ -76,4 +76,6 @@ jobs:
           TF_VAR_file_system: ${{ secrets.TF_VAR_FILE_SYSTEM }}
           TF_VAR_prefect_api_url: ${{ secrets.TF_VAR_PREFECT_API_URL }}
           TF_VAR_project_dir: ${{ secrets.TF_VAR_PROJECT_DIR }}
+          TF_VAR_loki_url: ${{ secrets.TF_VAR_LOKI_URL }}
+          TF_VAR_prometheus_remote_write_url: ${{ secrets.TF_VAR_PROMETHEUS_REMOTE_WRITE_URL }}
 
