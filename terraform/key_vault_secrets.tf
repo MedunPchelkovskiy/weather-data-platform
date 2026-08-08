@@ -62,3 +62,23 @@ data "azurerm_key_vault_secret" "prefect_api_key" {
   name         = "prefect-api-key"
   key_vault_id = azurerm_key_vault.main.id
 }
+
+data "azurerm_key_vault_secret" "loki_username" {
+  name         = "loki-username"
+  key_vault_id = azurerm_key_vault.main.id
+}
+
+data "azurerm_key_vault_secret" "loki_password" {
+  name         = "loki-password"
+  key_vault_id = azurerm_key_vault.main.id
+}
+
+data "azurerm_key_vault_secret" "prometheus_username" {
+  name         = "prometheus-username"
+  key_vault_id = azurerm_key_vault.main.id
+}
+
+data "azurerm_key_vault_secret" "prometheus_password" {
+  name         = "prometheus-password"
+  key_vault_id = azurerm_key_vault.main.id
+}
