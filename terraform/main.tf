@@ -61,3 +61,18 @@ resource "azurerm_container_app" "pushgateway" {
     project     = var.project_name
   }
 }
+
+
+resource "azurerm_monitor_diagnostic_setting" "container_env_logs" {
+  name                       = "weather-etl-diagnostics"
+  target_resource_id         = data.azurerm_container_app_environment.main.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.main.id
+
+  enabled_log {
+    category = "ContainerAppConsoleLogs"
+  }
+
+  enabled_log {
+    category = "ContainerAppSystemLogs"
+  }
+}
