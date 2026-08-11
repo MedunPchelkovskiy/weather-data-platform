@@ -37,6 +37,7 @@ cloudpickle==3.1.2
 colorama==0.4.6
 colorlog==6.10.1
 coolname==2.2.0
+cramjam==2.11.0
 cron_descriptor==2.0.6
 croniter==6.0.0
 cryptography==46.0.3
@@ -142,6 +143,7 @@ python-json-logger==4.0.0
 python-logging-loki-v2==1.1.1
 python-multipart==0.0.20
 python-slugify==8.0.4
+python-snappy==0.7.3
 pytz==2025.2
 PyYAML==6.0.3
 readchar==4.2.1
