@@ -36,13 +36,17 @@ from typing import Iterable, Sequence, Tuple
 
 import requests
 import snappy  # pip install python-snappy (изисква libsnappy-dev/brew snappy)
+from decouple import config
 
 logger = logging.getLogger(__name__)
 
 # ---- Конфигурация от env vars (вече setнати в Terraform за петте job-а) ----
-PROMETHEUS_REMOTE_WRITE_URL = os.environ.get("PROMETHEUS_REMOTE_WRITE_URL")
-PROMETHEUS_USERNAME = os.environ.get("PROMETHEUS_USERNAME")
-PROMETHEUS_PASSWORD = os.environ.get("PROMETHEUS_PASSWORD")
+PROMETHEUS_REMOTE_WRITE_URL = config("PROMETHEUS_REMOTE_WRITE_URL", default=None)
+PROMETHEUS_USERNAME = config("PROMETHEUS_USERNAME", default=None)
+PROMETHEUS_PASSWORD = config("PROMETHEUS_PASSWORD", default=None)
+# PROMETHEUS_REMOTE_WRITE_URL = os.environ.get("PROMETHEUS_REMOTE_WRITE_URL")
+# PROMETHEUS_USERNAME = os.environ.get("PROMETHEUS_USERNAME")
+# PROMETHEUS_PASSWORD = os.environ.get("PROMETHEUS_PASSWORD")
 
 REQUEST_TIMEOUT_SECONDS = 15  # аналогично на timeout fix-а в weather workers-ите
 

@@ -1,11 +1,12 @@
 # pushgateway_utils.py
+import time
 
 from decouple import config
 from prometheus_client import CollectorRegistry, Gauge, Counter, Histogram, push_to_gateway
 
 from src.helpers.logging_helpers.combine_loggers_helper import get_logger
 # ВНИМАНИЕ: коригирай пътя според това къде реално си сложил/а prometheus_remote_write.py
-from src.helpers.observability_helpers.prometheus_remote_write import push_metrics, build_timeseries
+from src.helpers.observability_helpers  .prometheus_remote_write import push_metrics, build_timeseries
 
 # Optional: configure Pushgateway URL via environment variable
 PUSHGATEWAY_URL = config("PUSHGATEWAY_URL", default="localhost:9091")
@@ -64,6 +65,9 @@ def push_metrics_to_gateway(flow_name: str, status: str, duration: float, pushga
             build_timeseries("etl_flow_duration_seconds", duration, {"flow_name": flow_name}),
             build_timeseries("etl_pipeline_running", 0, {"flow_name": flow_name}),
         ]
+        start = time.time()
+        success = push_metrics(timeseries)
+        logger.info(f"push_metrics отне {time.time() - start:.2f}s")
         if not push_metrics(timeseries):
             logger.warning("Failed to push metrics via remote write.")
 
