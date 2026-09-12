@@ -337,6 +337,12 @@ resource "azurerm_container_app_job" "hourly_etl" {
       }
 
       env {
+        name  = "PROMETHEUS_REMOTE_WRITE_URL"
+        value = var.prometheus_remote_write_url
+      }
+
+
+      env {
         name  = "JOB_NAME"
         value = "weather-etl-hourly"
       }
