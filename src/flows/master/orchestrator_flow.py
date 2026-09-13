@@ -15,7 +15,7 @@ from src.flows.gold.daily_dataset_forecast import daily_forecast
 @flow(name="OrchestratorFlow")
 @measure_flow_duration(flow_name="orchestrator_flow")
 def orchestrator_flow():
-    setup_logging()
+    # setup_logging()
     logger = get_logger()
     try:
         logger.info("Starting First Flow Deployment...",
