@@ -6,14 +6,6 @@ amplitude-analytics==1.2.3
 annotated-doc==0.0.5
 annotated-types==0.7.0
 anyio==4.11.0
-apache-airflow==3.1.2
-apache-airflow-core==3.1.2
-apache-airflow-providers-common-compat==1.8.0
-apache-airflow-providers-common-io==1.6.4
-apache-airflow-providers-common-sql==1.28.2
-apache-airflow-providers-smtp==2.3.1
-apache-airflow-providers-standard==1.9.1
-apache-airflow-task-sdk==1.1.2
 apprise==1.13.1
 argcomplete==3.6.3
 asgi-lifespan==2.1.0
